@@ -47,6 +47,8 @@ public class MessageMultipartChange implements IMessage, IMessageHandler<Message
     @Override
     public void toBytes(ByteBuf buf) {
 
+        if (buf == null) return;
+
         buf.writeInt(type.ordinal());
         buf.writeLong(partID.getMostSignificantBits());
         buf.writeLong(partID.getLeastSignificantBits());
